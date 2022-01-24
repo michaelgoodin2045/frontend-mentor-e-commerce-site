@@ -1,0 +1,29 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.counter {
+  width: 100%;
+  height: 56px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $clr--lt-gray;
+  color: $clr--dk-font;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-bottom: 16px;
+  @include a.breakpoint(laptop) {
+    width: 157px;
+  }
+  & .sign {
+    width: 12px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+  }
+}

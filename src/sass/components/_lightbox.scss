@@ -1,0 +1,133 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.lightbox {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  grid-template-columns: 1fr 28px 444px 28px 1fr;
+  grid-template-rows: 100px 212px 56px 232px 1fr;
+  @include a.breakpoint(laptop) {
+    grid-template-columns: 1fr 28px 494px 28px 1fr;
+    grid-template-rows: 133px 237px 56px 257px 1fr;
+  }
+  &.open-lightbox {
+    display: grid;
+  }
+
+  & .close-btn {
+    zoom: 133%;
+    grid-column: 4;
+    grid-row: 1;
+    padding-top: 42px;
+    padding-left: 8px;
+    cursor: pointer;
+    @include a.breakpoint(laptop) {
+      padding-top: 65px;
+    }
+  }
+  & .deck {
+    width: 500px;
+    height: 750px;
+    display: grid;
+    grid-column: 2/4;
+    grid-row: 2/5;
+    padding-left: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 247px 56px 247px 1fr;
+    @include a.breakpoint(laptop) {
+      width: 550px;
+    }
+
+    & .viewport {
+      width: 500px;
+      height: 700px;
+      @include a.breakpoint(laptop) {
+        width: 550px;
+        height: 550px;
+      }
+
+      & .image-container {
+        width: 500px;
+        height: 700px;
+        @include a.breakpoint(laptop) {
+          width: 550px;
+        }
+        & .card {
+          width: 500px;
+          display: flex;
+          flex-direction: column;
+          @include a.breakpoint(laptop) {
+            width: 550px;
+          }
+          & .large {
+            & img {
+              width: 500px;
+              height: 500px;
+              @include a.breakpoint(laptop) {
+                width: 550px;
+                height: 550px;
+              }
+            }
+          }
+        }
+      }
+    }
+    & .thumbnails {
+      grid-column: 1;
+      grid-row: 5;
+      width: 100%;
+      height: unset;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      gap: 31px;
+      padding-left: 0;
+      padding-top: 40px;
+      padding-bottom: 0;
+      & .thumbnail-item {
+        & .thumbnail {
+          cursor: pointer;
+          width: 88px;
+          height: 88px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  & .arrow {
+    width: 56px;
+    height: 56px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  & .arrow.left {
+    grid-column: 2;
+    grid-row: 3;
+    margin-left: -28px;
+    & .prev {
+      zoom: 100%;
+      padding-right: 5px;
+      padding-top: 3px;
+    }
+  }
+  & .arrow.right {
+    grid-column: 4;
+    grid-row: 3;
+    & .next {
+      zoom: 100%;
+      padding-left: 5px;
+      padding-top: 3px;
+    }
+  }
+}

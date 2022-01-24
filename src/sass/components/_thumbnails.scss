@@ -1,0 +1,66 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.thumbnails {
+  width: 300px;
+  height: 300px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-top: 52px;
+  padding-bottom: 52px;
+  @include a.breakpoint(laptop) {
+    width: 445px;
+    height: fit-content;
+    padding-top: 32px;
+    padding-bottom: 0;
+    gap: 31px;
+  }
+  & .thumbnail-item {
+    cursor: pointer;
+    &:hover {
+      position: relative;
+      &::after {
+        position: absolute;
+        content: ' ';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    & .thumbnail {
+      cursor: pointer;
+      width: 88px;
+      height: 88px;
+      border-radius: 10px;
+    }
+    &.overlay {
+      position: relative;
+      &::after {
+        position: absolute;
+        content: ' ';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border: 2px solid $clr--dk-orange;
+        background-color: rgba(255, 255, 255, 0.75);
+      }
+    }
+    & .thumbnail--active {
+      border: 2px solid $clr--dk-orange;
+      border-radius: 10px;
+      width: 88px;
+      height: 88px;
+      cursor: pointer;
+    }
+  }
+}

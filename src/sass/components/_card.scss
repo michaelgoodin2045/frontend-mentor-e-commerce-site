@@ -1,0 +1,29 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.card {
+  @include a.breakpoint(tablet) {
+    display: flex;
+    flex-direction: row;
+  }
+  @include a.breakpoint(laptop) {
+    flex-direction: column;
+  }
+  & img {
+    width: clamp(320px, calc(20rem + ((1vw - 3.2px) * 100)), 375px);
+    height: 300px;
+    object-fit: cover;
+    @include a.breakpoint(tablet) {
+      border-radius: 15px;
+    }
+
+    &.none {
+      display: none;
+    }
+
+    @include a.breakpoint(laptop) {
+      width: 445px;
+      height: 445px;
+    }
+  }
+}

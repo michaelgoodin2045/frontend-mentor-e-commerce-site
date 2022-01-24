@@ -1,0 +1,50 @@
+@use '../abstracts/' as a;
+
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700;800;900&display=swap');
+$ff--kumbh: 'Kumbh Sans', sans-serif;
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  @include a.breakpoint(laptop) {
+    font-size: 2.75rem;
+  }
+}
+
+//Menu items, discount, full price, and cart btn
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 0.75rem;
+  font-weight: bold;
+  @include a.breakpoint(laptop) {
+    font-size: 0.8125rem;
+  }
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.nav-btn {
+  font-size: 1.125rem;
+  font-weight: 700;
+  @include a.breakpoint(tablet) {
+    font-size: 0.9375rem;
+    font-weight: 400;
+  }
+}
+
+p {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5625rem;
+  @include a.breakpoint(laptop) {
+    font-size: 1rem;
+    line-height: 1.625;
+  }
+}

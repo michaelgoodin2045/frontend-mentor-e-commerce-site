@@ -1,0 +1,137 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.product {
+  width: 100%;
+  height: 832px;
+  @include a.breakpoint(laptop) {
+    width: min(1110px, calc(100% - 48px));
+    height: 581px;
+    margin-inline: auto;
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  @include a.breakpoint(laptop) {
+    flex-direction: row;
+  }
+  & .product-container {
+    margin: 24px 24px 0 24px;
+    @include a.breakpoint(tablet) {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      height: 250px;
+    }
+    @include a.breakpoint(laptop) {
+      width: 445px;
+      height: 442px;
+      margin: 0;
+      margin-top: 62px;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    @include a.breakpoint(desktop) {
+      margin-right: 47.5px;
+    }
+    & .company {
+      color: $clr--dk-orange;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      @include a.breakpoint(laptop) {
+        margin-bottom: 27px;
+      }
+    }
+    & .prod-name {
+      color: $clr--dk-font;
+      line-height: 2rem;
+      margin-bottom: 15px;
+      @include a.breakpoint(laptop) {
+        width: 445px;
+        line-height: 3rem;
+        margin-bottom: 32px;
+      }
+    }
+    & .prod-desc {
+      color: $clr--lt-font;
+      margin-bottom: 24px;
+      @include a.breakpoint(laptop) {
+        width: 445px;
+      }
+    }
+    & .price-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 24px;
+      @include a.breakpoint(tablet) {
+        margin-top: 28px;
+      }
+      @include a.breakpoint(laptop) {
+        margin-top: 0;
+        flex-wrap: wrap;
+      }
+      & .sale-price {
+        color: $clr--dk-font;
+        margin-right: 4.267%;
+        @include a.breakpoint(laptop) {
+          margin-right: 16px;
+          & h1 {
+            font-size: 1.75rem;
+          }
+        }
+      }
+      & .discount {
+        background-color: $clr--lt-orange;
+        color: $clr--dk-orange;
+        line-height: 1.625rem;
+        padding: 0 0.5em;
+        border-radius: 6px;
+        margin-right: 24%;
+        @include a.breakpoint(laptop) {
+          margin-right: 270px;
+        }
+      }
+      & .full-price {
+        color: $clr--pale-font;
+        line-height: 1.625rem;
+        text-decoration: line-through;
+        @include a.breakpoint(laptop) {
+          margin-top: 10px;
+        }
+      }
+    }
+    & .company,
+    .prod-name,
+    .prod-desc {
+      @include a.breakpoint(tablet) {
+        width: 375px;
+      }
+      @include a.breakpoint(laptop) {
+        width: 445px;
+      }
+    }
+    & .price-box,
+    .button-box {
+      @include a.breakpoint(tablet) {
+        width: 40%;
+      }
+      @include a.breakpoint(laptop) {
+        width: 100%;
+      }
+    }
+    & .button-box {
+      @include a.breakpoint(laptop) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+  }
+}

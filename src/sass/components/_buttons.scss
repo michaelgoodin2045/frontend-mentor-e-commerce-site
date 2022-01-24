@@ -1,0 +1,41 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.add-cart-btn {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: $clr--dk-orange;
+  color: $clr--white;
+  outline: 0;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 30px 60px -15px $clr--hover-orange;
+  cursor: pointer;
+  @include a.breakpoint(laptop) {
+    width: 272px;
+  }
+  &:hover {
+    background-color: $clr--hover-orange;
+  }
+  & .cart-icon {
+    margin-right: 15.5px;
+  }
+}
+
+.cart-items-btn {
+  width: 100%;
+  height: 56px;
+  background-color: $clr--dk-orange;
+  color: $clr--white;
+  outline: 0;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: $clr--hover-orange;
+  }
+}

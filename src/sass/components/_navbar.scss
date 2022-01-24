@@ -1,0 +1,202 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.navbar {
+  width: 100%;
+  height: 68px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0px 24px 25px 24px;
+  @include a.breakpoint(tablet) {
+    width: min(1110px, calc(100% - 48px));
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-inline: auto;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e4e9f2;
+  }
+  @include a.breakpoint(laptop) {
+    height: 112px;
+    justify-content: flex-start;
+  }
+  & .logo {
+    margin-left: 16px;
+    margin-right: clamp(
+      34.5px,
+      calc(2.15625rem + ((1vw - 3.2px) * 100)),
+      89.5px
+    );
+    @include a.breakpoint(tablet) {
+      margin-left: 0;
+      margin-right: 24px;
+    }
+    @include a.breakpoint(laptop) {
+      margin-right: 56.5px;
+    }
+  }
+  & .shopping-cart-items {
+    display: grid;
+    grid-template-columns: 9px 19px;
+    grid-template-rows: 5px 8px 13px;
+    width: 28px;
+    height: 26px;
+    margin-right: 16px;
+    @include a.breakpoint(tablet) {
+      margin-right: 12px;
+    }
+    @include a.breakpoint(laptop) {
+      margin-right: 46px;
+    }
+    & .shopping-cart-icon {
+      grid-column: 1;
+      grid-row: 2/3;
+    }
+    & .cart-count-oval {
+      display: none;
+      grid-column: 2;
+      grid-row: 1/2;
+      width: 19px;
+      height: 13px;
+      font-size: 0.625rem;
+      font-weight: 700;
+      background-color: $clr--dk-orange;
+      color: $clr--white;
+      &.open-oval {
+        display: grid;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+    }
+  }
+  & .avatar {
+    & img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      @include a.breakpoint(tablet) {
+        width: 40px;
+        height: 40px;
+      }
+      @include a.breakpoint(laptop) {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+  & .transparent {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: $clr--black;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    &.show-transparent {
+      display: block;
+    }
+  }
+  & .nav-links {
+    display: none;
+    position: absolute;
+    width: 250px;
+    height: 100vh;
+    background-color: $clr--white;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding-left: 25px;
+    @include a.breakpoint(tablet) {
+      position: unset;
+      width: 397px;
+      height: 67px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      top: unset;
+      left: unset;
+      z-index: unset;
+      padding-left: 0;
+      margin-right: calc(100% - 40px - 28px - 24px - 28px - 138px - 397px);
+    }
+    @include a.breakpoint(laptop) {
+      margin-right: clamp(
+        223px,
+        calc(13.9375rem + ((1vw - 9.8px) * 136.9231)),
+        401px
+      );
+    }
+    &.show-menu {
+      display: flex;
+      flex-direction: column;
+      & .close {
+        cursor: pointer;
+        margin-top: 25px;
+        margin-bottom: 54px;
+      }
+      & a {
+        height: 1.625rem;
+        margin-bottom: 20px;
+        width: fit-content;
+      }
+    }
+    & .nav-link {
+      & .nav-btn {
+        background-color: transparent;
+        padding: 0;
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+        @include a.breakpoint(tablet) {
+          color: $clr--lt-font;
+          position: relative;
+          &:hover {
+            color: $clr--dk-font;
+            &::before {
+              position: absolute;
+              content: ('');
+              width: 100%;
+              height: 4px;
+              bottom: -25px;
+              color: $clr--dk-font;
+              background-color: $clr--dk-orange;
+              @include a.breakpoint(laptop) {
+                bottom: -48px;
+              }
+            }
+          }
+        }
+      }
+    }
+    & .nav-link--active {
+      & .nav-btn {
+        position: relative;
+        background-color: transparent;
+        padding: 0;
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+        color: $clr--dk-font;
+        &::before {
+          position: absolute;
+          content: ('');
+          width: 100%;
+          height: 4px;
+          bottom: -25px;
+          color: $clr--dk-font;
+          background-color: $clr--dk-orange;
+          @include a.breakpoint(laptop) {
+            bottom: -48px;
+          }
+        }
+      }
+    }
+  }
+}

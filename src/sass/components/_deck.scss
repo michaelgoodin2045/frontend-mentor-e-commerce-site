@@ -1,0 +1,79 @@
+@use '../base/' as *;
+@use '../abstracts/' as a;
+
+.deck {
+  width: 100%;
+  @include a.breakpoint(tablet) {
+    //grid-column: 1;
+    //grid-row: 1;
+    display: flex;
+    flex-direction: row;
+    padding-left: 24px;
+  }
+  @include a.breakpoint(laptop) {
+    width: unset;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+  @include a.breakpoint(desktop) {
+    padding-left: 47.5px;
+  }
+
+  & .viewport {
+    width: 100%;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 56px calc(100% - 112px) 56px;
+    grid-template-rows: calc(50% - 20px) 40px calc(50% - 20px);
+    @include a.breakpoint(tablet) {
+      //width: 375px;
+    }
+    @include a.breakpoint(laptop) {
+      width: 445px;
+      height: 445px;
+    }
+    & .image-container {
+      width: clamp(320px, calc(20rem + ((1vw - 3.2px) * 100)), 375px);
+      height: 300px;
+      grid-column: 1/3;
+      grid-row: 1/3;
+      @include a.breakpoint(tablet) {
+        width: 100%;
+      }
+      @include a.breakpoint(laptop) {
+        width: 445px;
+        height: 445px;
+      }
+    }
+    & .arrow {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    & .arrow.left {
+      grid-column: 1;
+      grid-row: 2;
+      margin-left: 17px;
+      & .prev {
+        zoom: 75%;
+        padding-right: 5px;
+        padding-top: 3px;
+      }
+    }
+    & .arrow.right {
+      grid-column: 3;
+      grid-row: 2;
+      & .next {
+        zoom: 75%;
+        padding-left: 5px;
+        padding-top: 3px;
+      }
+    }
+  }
+}
